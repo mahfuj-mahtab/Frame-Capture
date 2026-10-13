@@ -1,0 +1,45 @@
+{
+  "name": "video-recorder",
+  "version": "1.0.0",
+  "description": "Simple cross-platform video and audio recorder (Electron)",
+  "main": "./out/main/index.js",
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/ensure-electron.cjs",
+    "dev": "electron-vite dev --noSandbox",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview --noSandbox",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder --linux deb",
+    "dist:deb": "npm run build && electron-builder --linux deb"
+  },
+  "author": "Video Recorder",
+  "homepage": "https://github.com/local/video-recorder",
+  "build": {
+    "appId": "com.videorecorder.app",
+    "productName": "Video Recorder",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*"
+    ],
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "category": "AudioVideo",
+      "maintainer": "Video Recorder <local@localhost>",
+      "executableArgs": [
+        "--no-sandbox"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "vite": "^5.4.11"
+  }
+}

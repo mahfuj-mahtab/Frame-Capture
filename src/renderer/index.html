@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; media-src 'self' blob: mediastream:;"
+    />
+    <title>Video Recorder</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <h1>Video Recorder</h1>
+            <p class="brand-tag">Screen recording</p>
+          </div>
+        </div>
+
+        <section class="panel" aria-label="Layout">
+          <h2 class="panel-title">Layout</h2>
+          <div class="field">
+            <label for="layout-select">Recording layout</label>
+            <select id="layout-select">
+              <option value="screen-only">Screen share</option>
+              <option value="screen-webcam">Screen + webcam</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="panel panel-devices">
+          <h2 class="panel-title">Devices</h2>
+
+          <div class="field field-screen">
+            <label for="screen-select">Display / window</label>
+            <select id="screen-select" disabled></select>
+            <button type="button" id="start-screen-preview" class="btn-ghost" disabled>
+              Share &amp; preview
+            </button>
+            <button type="button" id="refresh-sources" class="btn-ghost" disabled>
+              Refresh list
+            </button>
+          </div>
+
+          <div class="field field-camera hidden">
+            <label for="camera-select">Camera</label>
+            <select id="camera-select" disabled></select>
+          </div>
+
+          <div class="field field-mic">
+            <label for="mic-select">Microphone</label>
+            <select id="mic-select" disabled></select>
+          </div>
+        </section>
+
+        <p id="status" class="sidebar-status" role="status">Ready</p>
+      </aside>
+
+      <main class="stage">
+        <div class="preview-wrap">
+          <video id="compositor-preview" class="compositor-preview hidden" autoplay muted playsinline></video>
+          <div id="preview-placeholder" class="preview-placeholder">
+            <span class="placeholder-icon" aria-hidden="true">◎</span>
+            <span class="placeholder-text">Pick a display and click Share &amp; preview</span>
+          </div>
+          <div id="rec-badge" class="rec-badge hidden" aria-live="polite">
+            <span class="rec-dot"></span>
+            <span id="rec-timer">00:00</span>
+          </div>
+        </div>
+
+        <div class="transport">
+          <button type="button" id="record-btn" class="btn-record">
+            <span class="record-dot" aria-hidden="true"></span>
+            Record
+          </button>
+          <button type="button" id="stop-btn" class="btn-stop hidden" disabled>Stop</button>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="./recorder.js"></script>
+  </body>
+</html>
