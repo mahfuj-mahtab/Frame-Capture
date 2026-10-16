@@ -30,6 +30,9 @@
               <option value="screen-webcam">Screen + webcam</option>
             </select>
           </div>
+          <p id="camera-edit-hint" class="camera-edit-hint hidden">
+            Drag the camera on the preview to move it. Drag the handle to resize.
+          </p>
         </section>
 
         <section class="panel panel-devices">
@@ -49,6 +52,33 @@
           <div class="field field-camera hidden">
             <label for="camera-select">Camera</label>
             <select id="camera-select" disabled></select>
+            <label class="check-row" for="camera-enhance">
+              <input type="checkbox" id="camera-enhance" checked />
+              Enhance camera
+            </label>
+            <div class="shape-row" role="group" aria-label="Camera shape">
+              <span class="shape-label">Shape</span>
+              <button type="button" id="shape-circle" class="shape-btn is-active">Circle</button>
+              <button type="button" id="shape-square" class="shape-btn">Square</button>
+            </div>
+            <label class="slider-row camera-zoom-row" for="camera-zoom">
+              Zoom
+              <input type="range" id="camera-zoom" min="0" max="100" value="0" />
+            </label>
+            <div id="camera-look-sliders" class="look-sliders">
+              <label class="slider-row" for="camera-brightness">
+                Brightness
+                <input type="range" id="camera-brightness" min="80" max="160" value="115" />
+              </label>
+              <label class="slider-row" for="camera-blur">
+                Blur
+                <input type="range" id="camera-blur" min="0" max="24" value="6" />
+              </label>
+              <label class="slider-row" for="camera-clarity">
+                Clarity
+                <input type="range" id="camera-clarity" min="90" max="140" value="108" />
+              </label>
+            </div>
           </div>
 
           <div class="field field-mic">
@@ -66,6 +96,9 @@
           <div id="preview-placeholder" class="preview-placeholder">
             <span class="placeholder-icon" aria-hidden="true">◎</span>
             <span class="placeholder-text">Pick a display and click Share &amp; preview</span>
+          </div>
+          <div id="camera-overlay" class="camera-overlay hidden" role="group" aria-label="Camera position">
+            <button type="button" id="camera-resize" class="camera-resize" aria-label="Resize camera"></button>
           </div>
           <div id="rec-badge" class="rec-badge hidden" aria-live="polite">
             <span class="rec-dot"></span>
